@@ -82,9 +82,7 @@ javascript:(function(){const styleURL="http://localhost:1981/style.css";const in
 
 - server.js: Contains the server setup, CSS injection logic, and WebSocket connection.
 
-- public/injector.js: Responsible for injecting the CSS into the live web page.
-
-- public/style.css: The CSS file that you modify to see live updates on the page.
+- style.css: The CSS file that you modify to see live updates on the page.
 
 - bin/cli.js: Command-line interface to run the project via terminal.
 
