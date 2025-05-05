@@ -84,8 +84,6 @@ javascript:(function(){const styleURL="http://localhost:1981/style.css";const in
 
 - style.css: The CSS file that you modify to see live updates on the page.
 
-- bin/cli.js: Command-line interface to run the project via terminal.
-
 - package.json: Contains project dependencies and scripts.
 
 ## Dependencies
