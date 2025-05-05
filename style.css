@@ -1,0 +1,34 @@
+
+/* Example, Test code */
+
+h1,
+h2,
+h3 {
+  background: linear-gradient(
+    257deg,
+    rgba(255, 255, 255, 1) 15%,
+    rgba(189, 189, 189, 1) 44%,
+    rgba(166, 166, 166, 1) 60%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  padding: 2rem;
+  color: transparent !important;
+  background-clip: text;
+  background-size: 200%;
+  animation: wave 2s ease-in-out alternate infinite;
+  &::after {
+    content: " Remote CSS Injector is now working! 🎉 ";
+    color: #ffd104;
+    font-size: 2rem;
+  }
+}
+
+@keyframes wave {
+  to {
+    background-size: 50%;
+  }
+}
+
+.contact-message-kontakt-form label{
+  font-size: 4rem ;
+}
