@@ -36,9 +36,27 @@ function startServer(port) {
 
 function setupWebSocket(server) {
   const wss = new WebSocketServer({ server });
+
   wss.on("connection", (ws) => {
     console.log("🔌 WebSocket client connected");
+
+    // Set up a keep-alive ping every 30 seconds
+    const interval = setInterval(() => {
+      if (ws.readyState === ws.OPEN) {
+        ws.ping(); // Send ping to keep connection alive
+      }
+    }, 30000); // 30 seconds
+
+    ws.on("pong", () => {
+      console.log("✅ Received pong from client");
+    });
+
+    ws.on("close", () => {
+      clearInterval(interval); // Clear the ping interval when the connection is closed
+      console.log("🔌 WebSocket client disconnected");
+    });
   });
+
   globalThis.__wss__ = wss;
 }
 
