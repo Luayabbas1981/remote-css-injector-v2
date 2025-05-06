@@ -12,43 +12,43 @@ You're working with a third-party site you don’t fully control but have access
 
 ## Features
 
-Real-time CSS Injection
+- Real-time CSS Injection
 Instantly inject local custom CSS into any live webpage and see the changes immediately — no refresh needed.
 
-Remote Project Styling
+- Remote Project Styling
 Apply and test your CSS locally on any online or local project simply by entering its URL — no need to clone or run it locally.
 
-Editable Pseudo-elements and Keyframes
+- Editable Pseudo-elements and Keyframes
 Modify ::before, ::after, and @keyframes styles directly, making dynamic visual experimentation easier than ever.
 
-Interactive CSS Inspector Popup
+- Interactive CSS Inspector Popup
 Click on any element to view a draggable popup showing its full CSS cascade — including inline styles, your rules, library styles, and overridden browser defaults.
 
-Categorized CSS View
+- Categorized CSS View
 Styles are grouped into:
 
-Selected Element
+ 1-Selected Element
 
-Inline Styles
+2-Inline Styles
 
-Your CSS
+3-Your CSS
 
-External Libraries
+4-External Libraries
 
-Overridden Defaults
+5-Overridden Defaults
 
-giving you clear insight into how styles interact and override one another.
+6-giving you clear insight into how styles interact and override one another.
 
-Effective Rule Highlighting
+- Effective Rule Highlighting
 Only active and effective CSS properties are shown, reducing clutter and helping you focus on what truly affects the design.
 
-Draggable Popup Interface
+- Draggable Popup Interface
 Move the popup anywhere on the screen to keep it accessible without interfering with your layout or inspection area.
 
-Flexible Copying Options
+- Flexible Copying Options
 Use the "Copy" button to grab all visible rules at once, or manually select and copy just the parts you need — your choice.
 
-Minimal UI Interference
+- Minimal UI Interference
 The popup appears inline on the page, not in a separate panel, so it won’t disrupt layout flow or reduce working space.
 
 ## Install dependencies:
