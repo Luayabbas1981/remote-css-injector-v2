@@ -12,22 +12,44 @@ You're working with a third-party site you don’t fully control but have access
 
 ## Features
 
-- Real-time CSS Injection: Instantly inject custom CSS into any online web page and see the changes live without refreshing the page.
+Real-time CSS Injection
+Instantly inject local custom CSS into any live webpage and see the changes immediately — no refresh needed.
 
-- Works for Both Local and Remote Projects: You can inspect and modify any online project by providing its URL.
+Remote Project Styling
+Apply and test your CSS locally on any online or local project simply by entering its URL — no need to clone or run it locally.
 
-- Direct Editing of Pseudo-elements and Keyframes: Easily modify ::before, ::after pseudo-elements, and @keyframes for more dynamic styling adjustments.
+Editable Pseudo-elements and Keyframes
+Modify ::before, ::after, and @keyframes styles directly, making dynamic visual experimentation easier than ever.
 
-- **Live CSS Inspector Popup**: Click any element on the page to instantly view the CSS rules affecting it in a popup window, without opening DevTools.
+Interactive CSS Inspector Popup
+Click on any element to view a draggable popup showing its full CSS cascade — including inline styles, your rules, library styles, and overridden browser defaults.
 
-- **Copy CSS with One Click**: Use the "Copy" button inside the popup to copy all matched CSS rules to your clipboard.
+Categorized CSS View
+Styles are grouped into:
 
-- Collaborative Sharing: Share the live page with others for collaborative styling and debugging in real-time.
+Selected Element
 
-- No Local Setup Required: You don’t need to run the project locally to make styling changes. Simply provide the URL of the online project.
+Inline Styles
 
-- No Interruption to Browser UI: Unlike DevTools, this tool doesn’t take up space on your browser window and doesn’t distract from the page you're working on.
-This is especially useful when working on layouts, where opening DevTools can alter element dimensions or layout flow. With this tool, you preserve the natural rendering of the page without needing to juggle multiple windows.
+Your CSS
+
+External Libraries
+
+Overridden Defaults
+
+giving you clear insight into how styles interact and override one another.
+
+Effective Rule Highlighting
+Only active and effective CSS properties are shown, reducing clutter and helping you focus on what truly affects the design.
+
+Draggable Popup Interface
+Move the popup anywhere on the screen to keep it accessible without interfering with your layout or inspection area.
+
+Flexible Copying Options
+Use the "Copy" button to grab all visible rules at once, or manually select and copy just the parts you need — your choice.
+
+Minimal UI Interference
+The popup appears inline on the page, not in a separate panel, so it won’t disrupt layout flow or reduce working space.
 
 ## Install dependencies:
 
@@ -63,7 +85,7 @@ npm start
 ⚠️ Make sure it starts with javascript: and there is no space before it.
 
 ```bash
-javascript:(function(){const e="http://localhost:1981/style.css",t=document.querySelector("link[data-live]");t&&t.remove();const o=document.createElement("link");o.rel="stylesheet",o.href=e+"?t="+Date.now(),o.setAttribute("data-live","true"),document.head.appendChild(o);const a=new WebSocket("ws://localhost:1981");a.onmessage=r=>{"css-updated"===r.data&&(o.href=e+"?t="+Date.now(),console.log("Live CSS updated"))};const n=document.getElementById("css-popup");n&&n.remove();const i=document.createElement("div");i.id="css-popup",i.setAttribute("style","position:fixed;top:10%;left:50%;transform:translateX(-50%);width:60%;max-height:70vh;overflow:auto;background:#1e1e1e;color:#f1f1f1;font-family:monospace;z-index:999999;border-radius:8px;padding-top:2.5rem;box-shadow:0 0 15px rgba(0,0,0,0.6);user-select:text;");const l=document.createElement("div");l.setAttribute("style","position:fixed;top:0;left:0;right:0;background:#111;display:flex;justify-content:space-between;padding:0.5rem;border-bottom:1px solid #444;z-index:9999999;");const d=document.createElement("button");d.textContent="Copy",d.setAttribute("style","background:green;color:white;border:none;padding:4px 8px;cursor:pointer;");const c=document.createElement("button");c.textContent="X",c.setAttribute("style","background:red;color:white;border:none;padding:4px 8px;cursor:pointer;");const s=document.createElement("div");s.setAttribute("style","padding:1rem;margin:0;white-space:normal;display:flex;flex-direction:column;gap:1rem;");d.onclick=()=>{navigator.clipboard.writeText(s.textContent),d.textContent="Copied!",setTimeout(()=>d.textContent="Copy",1e3)},c.onclick=()=>{document.removeEventListener("click",u,!0),i.remove()},l.appendChild(d),l.appendChild(c),i.appendChild(l),i.appendChild(s),document.body.appendChild(i);const m=(e,t,o)=>{const a=document.createElement("div"),n=document.createElement("div");n.textContent=e,n.setAttribute("style",`background:${t};color:black;font-weight:bold;padding:4px 8px;border-radius:4px 4px 0 0;`);const i=document.createElement("pre");return i.textContent=o,i.setAttribute("style","background:#2a2a2a;margin:0;padding:0.5rem;border-radius:0 0 4px 4px;white-space:pre-wrap;overflow-x:auto;"),a.appendChild(n),a.appendChild(i),a},f=e=>e.split(",").every(e=>["*","::before","::after","html","body"].includes(e.trim())||/^\W*$/.test(e.trim()));let u=function(e){if(i.contains(e.target))return;e.preventDefault(),e.stopPropagation();const t=e.target,a=t.getAttribute("style")?t.getAttribute("style").split(";").map(e=>e.trim()).filter(Boolean).join(";\n")+";":"",n=[],l=[],d=window.getComputedStyle(t),c=document.createElement(t.tagName);t.classList.forEach(e=>c.classList.add(e));c.style.all="initial",document.body.appendChild(c);const r=window.getComputedStyle(c),u=[];for(const e of d)r.getPropertyValue(e)!==d.getPropertyValue(e)&&!e.startsWith("-webkit")&&u.push(`${e}: ${d.getPropertyValue(e)};`);document.body.removeChild(c);for(const a of document.styleSheets)try{const r=a.cssRules||a.rules;if(r)for(const o of r)o.selectorText&&t.matches(o.selectorText)&&!f(o.selectorText)&&((a.href||"").includes("style.css")||(a.href||"").startsWith(location.origin)?n.push(o.cssText):l.push(o.cssText))}catch{}s.innerHTML="";const g=t.tagName.toLowerCase()+(t.id?"#"+t.id:"")+(t.className?"."+[...t.classList].join("."):"");s.appendChild(m("Selected Element","#00bcd4",g)),a&&s.appendChild(m("Inline Styles","#007acc",a)),n.length&&s.appendChild(m("Your CSS","#28a745",n.join("\n\n"))),l.length&&s.appendChild(m("External Library","#ff9800",l.join("\n\n"))),u.length&&s.appendChild(m("Overridden Default Styles","#ffc107",u.join("\n\n")));i.scrollTop=0};document.addEventListener("click",u,!0);})();
+javascript:(function(){const e="http://localhost:1981/style.css",t=document.querySelector("link[data-live]");t&&t.remove();const o=document.createElement("link");o.rel="stylesheet",o.href=e+"?t="+Date.now(),o.setAttribute("data-live","true"),document.head.appendChild(o);const a=new WebSocket("ws://localhost:1981");a.onmessage=r=>{"css-updated"===r.data&&(o.href=e+"?t="+Date.now(),console.log("Live CSS updated"))};const n=document.getElementById("css-popup");n&&n.remove();const i=document.createElement("div"),s=JSON.parse(localStorage.getItem("css-popup-position")||"{}"),l=s.top||"10%",d=s.left||"50%",c=s.left?"":"translateX(-50%)";i.id="css-popup",i.setAttribute("style",`position:fixed;top:${l};left:${d};transform:${c};width:60%;max-height:70vh;overflow:auto;background:#1e1e1e;color:#f1f1f1;font-family:monospace;z-index:999999;border-radius:8px;padding-top:2.5rem;box-shadow:0 0 15px rgba(0,0,0,0.6);user-select:text;`);const p=document.createElement("div");p.setAttribute("style","cursor:move;position:absolute;top:0;left:0;right:0;background:#111;display:flex;justify-content:space-between;padding:0.5rem;border-bottom:1px solid #444;z-index:9999999;");const m=document.createElement("button");m.textContent="Copy",m.setAttribute("style","background:green;color:white;border:none;padding:4px 8px;cursor:pointer;");const u=document.createElement("button");u.textContent="X",u.setAttribute("style","background:red;color:white;border:none;padding:4px 8px;cursor:pointer;");const h=document.createElement("div");h.setAttribute("style","padding:1rem;margin:0;white-space:normal;display:flex;flex-direction:column;gap:1rem;");m.onclick=()=>{navigator.clipboard.writeText(h.textContent),m.textContent="Copied!",setTimeout(()=>m.textContent="Copy",1e3)},u.onclick=()=>{document.removeEventListener("click",y,!0),i.remove()},p.appendChild(m),p.appendChild(u),i.appendChild(p),i.appendChild(h),document.body.appendChild(i),function(e,t){let o=0,a=0,n=!1;t.addEventListener("mousedown",t=>{n=!0;const r=e.getBoundingClientRect();o=t.clientX-r.left,a=t.clientY-r.top,e.style.transform="none",document.body.style.userSelect="none"}),document.addEventListener("mousemove",t=>{if(n){const r=t.clientX-o,l=t.clientY-a;e.style.left=`${r}px`,e.style.top=`${l}px`,localStorage.setItem("css-popup-position",JSON.stringify({left:`${r}px`,top:`${l}px`}))}}),document.addEventListener("mouseup",()=>{n=!1,document.body.style.userSelect="auto"})}(i,p);const f=(e,t,o)=>{const a=document.createElement("div"),n=document.createElement("div");n.textContent=e,n.setAttribute("style",`background:${t};color:black;font-weight:bold;padding:4px 8px;border-radius:4px 4px 0 0;`);const i=document.createElement("pre");return i.textContent=o,i.setAttribute("style","background:#2a2a2a;margin:0;padding:0.5rem;border-radius:0 0 4px 4px;white-space:pre-wrap;overflow-x:auto;"),a.appendChild(n),a.appendChild(i),a},g=e=>e.split(",").every(e=>["*","::before","::after","html","body"].includes(e.trim())||/^\W*$/.test(e.trim()));let y=function(e){if(i.contains(e.target))return;e.preventDefault(),e.stopPropagation();const t=e.target,o=t.getAttribute("style")?t.getAttribute("style").split(";").map(e=>e.trim()).filter(Boolean).join(";\n")+";":"",a=[],n=[],r=window.getComputedStyle(t),l=document.createElement(t.tagName);t.classList.forEach(e=>l.classList.add(e)),l.style.all="initial",document.body.appendChild(l);const d=window.getComputedStyle(l),c=[];for(const e of r)d.getPropertyValue(e)!==r.getPropertyValue(e)&&!e.startsWith("-webkit")&&c.push(`${e}: ${r.getPropertyValue(e)};`);document.body.removeChild(l);for(const o of document.styleSheets)try{const r=o.cssRules||o.rules;if(r)for(const l of r)l.selectorText&&t.matches(l.selectorText)&&!g(l.selectorText)&&((o.href||"").includes("style.css")||(o.href||"").startsWith(location.origin)?a.push(l.cssText):n.push(l.cssText))}catch{}h.innerHTML="";const p=t.tagName.toLowerCase()+(t.id?"#"+t.id:"")+(t.className?"."+[...t.classList].join("."):"");h.appendChild(f("Selected Element","#00bcd4",p)),o&&h.appendChild(f("Inline Styles","#007acc",o)),a.length&&h.appendChild(f("Your CSS","#28a745",a.join("\n\n"))),n.length&&h.appendChild(f("External Library","#ff9800",n.join("\n\n"))),c.length&&h.appendChild(f("Overridden Default Styles","#ffc107",c.join("\n\n"))),i.scrollTop=0};document.addEventListener("click",y,!0)})();
 
 ```
 3- Open any website you want to inspect.
