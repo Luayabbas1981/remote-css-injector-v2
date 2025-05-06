@@ -24,20 +24,19 @@ Modify ::before, ::after, and @keyframes styles directly, making dynamic visual 
 - Interactive CSS Inspector Popup
 Click on any element to view a draggable popup showing its full CSS cascade — including inline styles, your rules, library styles, and overridden browser defaults.
 
-- Categorized CSS View
-Styles are grouped into:
+- Categorized CSS View, Styles are grouped into:
 
- 1-Selected Element
+   1-Selected Element
 
-2-Inline Styles
+   2-Inline Styles
 
-3-Your CSS
+   3-Your CSS
 
-4-External Libraries
+   4-External Libraries
 
-5-Overridden Defaults
+   5-Overridden Defaults
 
-6-giving you clear insight into how styles interact and override one another.
+   6-giving you clear insight into how styles interact and override one another.
 
 - Effective Rule Highlighting
 Only active and effective CSS properties are shown, reducing clutter and helping you focus on what truly affects the design.
