@@ -132,6 +132,6 @@ The author of this project does not accept any responsibility for misuse, unauth
 Use at your own risk.
 
 
-#### This README provides all the necessary information about how to use the Remote CSS Inspector tool, its benefits compared to DevTools, and all of its key features.
+#### This README provides all the necessary information about how to use the Remote CSS Inspector tool.
 
 Let me know if you need further adjustments!
