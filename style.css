@@ -18,7 +18,7 @@ h3 {
   animation: wave 2s ease-in-out alternate infinite;
   &::after {
     content: " Remote CSS Injector is now working! 🎉 ";
-    color: #ffd904;
+    color: #ffb004;
     font-size: 2rem;
   }
 }
@@ -28,4 +28,3 @@ h3 {
     background-size: 50%;
   }
 }
-
