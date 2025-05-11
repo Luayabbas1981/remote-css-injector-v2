@@ -28,11 +28,11 @@ You're working with a third-party site you don’t fully control but have access
   Styles are grouped into: 📝
 
 1. Element Path
-1. Selected Element
-2. Inline Styles
-3. Your CSS
-4. External Libraries
-5. Overridden Defaults  
+2. Selected Element
+3. Inline Styles
+4. Your CSS
+5. External Libraries
+6. Overridden Defaults  
    Giving you clear insight into how styles interact and override one another.
 
 - Effective Rule Highlighting  
