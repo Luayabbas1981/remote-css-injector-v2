@@ -21,6 +21,10 @@ You're working with a third-party site you don’t fully control but have access
 - Editable Pseudo-elements and Keyframes  
   Modify ::before, ::after, and @keyframes styles directly, making dynamic visual experimentation easier than ever.
 
+- Images Folder 📁
+  The project includes an images/ folder.
+  You can use it to add image assets and reference them in your CSS, such as background images.
+
 - Interactive CSS Inspector Popup  
   Click on any element to view a draggable popup showing its full CSS cascade — including inline styles, your rules, library styles, and overridden browser defaults.
 
@@ -110,6 +114,8 @@ javascript:(function(){const e="http://localhost:1981/style.css",t=document.quer
 - style.css: The CSS file that you modify to see live updates on the page.
 
 - package.json: Contains project dependencies and scripts.
+
+- images: Add you images here to use it through Css such like a background image.
 
 ## Dependencies
 
